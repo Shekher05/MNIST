@@ -7,24 +7,24 @@ import sys
 
 def create_model(input_dim=784):
     try:
-        logging.info("Creating Keras Sequential model")
+        logging.info("Creating Keras Sequential model for multi-class digit recognition")
         model = Sequential([
             tf.keras.Input(shape=(input_dim,)),
-            Dense(25, activation='sigmoid', name='layer1'),
-            Dense(15, activation='sigmoid', name='layer2'),
-            Dense(1, activation='sigmoid', name='layer3')
-        ], name="my_model")
+            Dense(128, activation='relu', name='layer1'),
+            Dense(64, activation='relu', name='layer2'),
+            Dense(10, activation='softmax', name='output')  # 10 outputs for digits 0-9
+        ], name="mnist_model")
         logging.info("Model created")
         return model
     except Exception as e:
         logging.error(f"Error creating model: {e}")
         raise CustomException(str(e), sys)
 
-def compile_and_train(model, X, y, epochs=20):
+def compile_and_train(model, X, y, epochs=30):
     try:
         logging.info("Compiling and training model")
         model.compile(
-            loss=tf.keras.losses.BinaryCrossentropy(),
+            loss=tf.keras.losses.SparseCategoricalCrossentropy(),  # Changed for multi-class
             optimizer=tf.keras.optimizers.Adam(0.001),
             metrics=['accuracy']
         )

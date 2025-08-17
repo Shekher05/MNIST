@@ -5,7 +5,7 @@ import numpy as np
 from src.logger import logging
 from src.exception_h import CustomException
 
-def plot_sample_images(X, y, num_images=64, img_shape=(28, 28)):
+def plot_sample_images(X, y, num_images=100, img_shape=(28, 28)):
     """
     Plots a grid of sample images from the dataset.
     """
