@@ -34,7 +34,7 @@ def main():
         print(f"Test data shape: {X_test.shape}, {y_test.shape}")
 
         # Visualize some images
-        plot_sample_images(X_train, y_train, num_images=100, img_shape=(28, 28))
+        # plot_sample_images(X_train, y_train, num_images=100, img_shape=(28, 28))
 
         # For multi-class, we use the labels directly (no binary conversion)
         # y_train and y_test are already 0-9 labels
@@ -51,7 +51,7 @@ def main():
 
         # Save the model
         import os
-        model_save_path = os.path.join("artifacts", "mnist_model.h5")
+        model_save_path = os.path.join("artifacts", "mnist_model.keras")
         os.makedirs(os.path.dirname(model_save_path), exist_ok=True)
         model.save(model_save_path)
         logging.info(f"Model saved to {model_save_path}")
