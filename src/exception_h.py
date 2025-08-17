@@ -1,5 +1,5 @@
 import sys 
-from logger import logging
+from src.logger import logging
 # Custom exception handling module
 
 #Custom exception handling documentation on docs.pythopn.org

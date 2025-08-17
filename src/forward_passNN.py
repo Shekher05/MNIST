@@ -1,6 +1,6 @@
 import numpy as np
-from logger import logging
-from exception_h import CustomException
+from src.logger import logging
+from src.exception_h import CustomException
 import sys
 
 def sigmoid(x):

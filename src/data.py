@@ -1,7 +1,7 @@
 import numpy as np
 import struct
-from logger import logging
-from exception_h import CustomException
+from src.logger import logging
+from src.exception_h import CustomException
 
 
 def read_images_labels(images_filepath, labels_filepath):
@@ -29,10 +29,10 @@ def read_images_labels(images_filepath, labels_filepath):
     return images, labels
 
 def load_data_mnist_format(
-    train_images_path="train-images-idx3-ubyte",
-    train_labels_path="train-labels-idx1-ubyte",
-    test_images_path="t10k-images-idx3-ubyte",
-    test_labels_path="t10k-labels-idx1-ubyte",
+    train_images_path=r"C:\Users\05she\Mnist\mnist_data\train-images.idx3-ubyte",
+    train_labels_path=r"C:\Users\05she\Mnist\mnist_data\train-labels.idx1-ubyte",
+    test_images_path=r"C:\Users\05she\Mnist\mnist_data\t10k-images.idx3-ubyte",
+    test_labels_path=r"C:\Users\05she\Mnist\mnist_data\t10k-labels.idx1-ubyte",
     num_train=None,
     num_test=None
 ):

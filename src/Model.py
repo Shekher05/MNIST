@@ -1,8 +1,8 @@
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
-from logger import logging
-from exception_h import CustomException
+from src.logger import logging
+from src.exception_h import CustomException
 import sys
 
 def create_model(input_dim=784):

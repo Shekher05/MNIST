@@ -2,8 +2,8 @@ import sys
 import os
 import matplotlib.pyplot as plt
 import numpy as np
-from logger import logging
-from exception_h import CustomException
+from src.logger import logging
+from src.exception_h import CustomException
 
 def plot_sample_images(X, y, num_images=64, img_shape=(28, 28)):
     """
