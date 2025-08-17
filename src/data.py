@@ -1,7 +1,7 @@
-# data_utils.py
 import numpy as np
 import struct
 from logger import logging
+from exception_h import CustomExceptions
 
 
 def read_images_labels(images_filepath, labels_filepath):
