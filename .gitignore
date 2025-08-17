@@ -6,6 +6,12 @@ __pycache__/
 # C extensions
 *.so
 
+#File under work in progress
+app.py
+templates/
+index.html
+logs/
+
 # Distribution / packaging
 .Python
 build/
