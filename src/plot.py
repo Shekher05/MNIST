@@ -1,4 +1,7 @@
+import sys
+import os
 import matplotlib.pyplot as plt
+import numpy as np
 from logger import logging
 from exception_h import CustomException
 
@@ -22,4 +25,4 @@ def plot_sample_images(X, y, num_images=64, img_shape=(28, 28)):
         logging.info("Sample images plotted")
     except Exception as e:
         logging.error(f"Error plotting images: {e}")
-        raise
+        raise CustomException(e,sys)
