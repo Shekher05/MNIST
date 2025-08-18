@@ -36,30 +36,31 @@ MNIST/
 │   ├── forward_.py         # Forward propagation / training logic
 │   ├── logger.py           # Logging configuration
 │   ├── Model.py            # Model definition
-│   ├── plot.py             # Visualization (accuracy/loss graphs etc.)
+│   ├── plot.py             # Visualization 
 │
 │-- .gitignore
 │-- main.py                 # Main script (training entry point)
 │-- requirement.txt         # Project dependencies
 │-- README.md               # Project documentation
 
----
-
+```
 ## ▶️ How to Run  
 
 1. **Clone the repository:**  
    ```bash
    git clone https://github.com/Shekher05/MNIST.git
    cd MNIST-Digit-Recognition
+   ```
 
 2. **Install Dependencies:**
    ```bash
    pip install -r requirement.txt
+   ```
 
 3. **Run Training:**
    ```bash
    python main.py
-
+   ```
 ---
 
 ## 🔮 Future Improvements  
