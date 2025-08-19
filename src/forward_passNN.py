@@ -11,6 +11,14 @@ def sigmoid(x):
         logging.error(f"Error in sigmoid: {e}")
         raise CustomException(str(e), sys)
 
+def ReLu(x):
+        try:
+            logging.debug("Applying ReLU activation")
+            return np.maximum(0, x)
+        except Exception as e:
+            logging.error(f"Error in relu function: {e}")
+            raise CustomException(str(e), sys)
+
 def my_dense(a_in, W, b, g):
     try:
         logging.info("Running my_dense layer")
