@@ -33,7 +33,7 @@ MNIST/
 │-- src/                    # Core source code
 │   ├── data.py             # Data loading & preprocessing
 │   ├── exception_h.py      # Exception handling utilities
-│   ├── forward_.py         # Forward propagation / training logic
+│   ├── forwardpass_NN.py   # Forward propagation / training logic
 │   ├── logger.py           # Logging configuration
 │   ├── Model.py            # Model definition
 │   ├── plot.py             # Visualization 
