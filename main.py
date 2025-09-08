@@ -10,6 +10,31 @@ from src.plot import plot_sample_images
 from src.Model import create_model, compile_and_train
 from src.forward_passNN import my_sequential, sigmoid
 import numpy as np
+from tensorflow.keras.models import load_model
+import random
+import matplotlib.pyplot as plt
+import numpy as np
+
+def load_and_predict(X_test, y_test):
+    # Load the saved model
+    model_path = "artifacts/mnist_model.keras"
+    model = load_model(model_path)
+    logging.info("loaded from the model {model_path}")
+    # Pick a random test sample
+    idx = random.randint(0, len(X_test) - 1)
+    sample_image = X_test[idx]
+    true_label = y_test[idx]
+    # Reshape and predict
+    sample_pred = model.predict(sample_image.reshape(1, 784))
+    predicted_label = np.argmax(sample_pred, axis=1)[0]
+    # Print results
+    print(f"True label: {true_label}, Predicted label: {predicted_label}")
+    # Show image
+    plt.imshow(sample_image.reshape(28, 28), cmap="gray")
+    plt.title(f"True: {true_label}, Predicted: {predicted_label}")
+    plt.axis("off")
+    plt.show()
+
 
 def main():
     try:
@@ -33,22 +58,15 @@ def main():
         print(f"Training data shape: {X_train.shape}, {y_train.shape}")
         print(f"Test data shape: {X_test.shape}, {y_test.shape}")
 
-        # Visualize some images
-        # plot_sample_images(X_train, y_train, num_images=100, img_shape=(28, 28))
-
-        # For multi-class, we use the labels directly (no binary conversion)
-        # y_train and y_test are already 0-9 labels
-
+        ## if you hadn't train the model use the below code to train the model
         # Create and train model
         model = create_model(input_dim=784)
         model = compile_and_train(model, X_train, y_train, epochs=10)
-
         # Evaluate the model
         preds = model.predict(X_test)
         pred_classes = np.argmax(preds, axis=1)
         accuracy = np.mean(pred_classes == y_test)
         print(f"Test accuracy: {accuracy:.4f}")
-
         # Save the model
         import os
         model_save_path = os.path.join("artifacts", "mnist_model.keras")
@@ -56,13 +74,17 @@ def main():
         model.save(model_save_path)
         logging.info(f"Model saved to {model_save_path}")
 
-        # Example prediction
-        sample_idx = 123  # Pick a random test example
-        sample_image = X_test[sample_idx]
-        sample_pred = model.predict(sample_image.reshape(1, 784))
-        predicted_digit = np.argmax(sample_pred)
-        true_digit = y_test[sample_idx]
-        print(f"Example prediction - True: {true_digit}, Predicted: {predicted_digit}")
+         # Example prediction
+        # sample_idx = 123  # Pick a random test example
+        # sample_image = X_test[sample_idx]
+        # sample_pred = model.predict(sample_image.reshape(1, 784))
+        # predicted_digit = np.argmax(sample_pred)
+        # true_digit = y_test[sample_idx]
+        # print(f"Example prediction - True: {true_digit}, Predicted: {predicted_digit}")
+
+        ## If you have created the model use the below code to load the model and predict
+        load_and_predict(X_test, y_test)
+
         
     except Exception as e:
         logging.error(f"Unhandled exception in main workflow: {e}")
