@@ -1,5 +1,6 @@
 import numpy as np
 import struct
+from pathlib import Path
 from src.logger import logging
 from src.exception_h import CustomException
 
@@ -23,16 +24,20 @@ def read_images_labels(images_filepath, labels_filepath):
         magic, size, rows, cols = struct.unpack('>IIII', file.read(16))
         if magic != 2051:
             raise ValueError(f"Images file magic number mismatch: {magic}")
-        images = np.frombuffer(file.read(), dtype=np.uint8).reshape(size, rows * cols)
+        images = np.frombuffer(file.read(), dtype=np.uint8).reshape(size, rows * cols).astype(np.float32) / 255.0
+    if len(images) != len(labels):
+        raise ValueError(f"Image/label count mismatch: {len(images)} vs {len(labels)}")
 
     logging.info(f"Loaded {images.shape[0]} images of size {rows}x{cols}")
     return images, labels
 
+DATA_DIR = Path(__file__).resolve().parent.parent / "mnist_data"
+
 def load_data_mnist_format(
-    train_images_path=r"C:\Users\05she\Mnist\mnist_data\train-images.idx3-ubyte",
-    train_labels_path=r"C:\Users\05she\Mnist\mnist_data\train-labels.idx1-ubyte",
-    test_images_path=r"C:\Users\05she\Mnist\mnist_data\t10k-images.idx3-ubyte",
-    test_labels_path=r"C:\Users\05she\Mnist\mnist_data\t10k-labels.idx1-ubyte",
+    train_images_path=DATA_DIR / "train-images.idx3-ubyte",
+    train_labels_path=DATA_DIR / "train-labels.idx1-ubyte",
+    test_images_path=DATA_DIR / "t10k-images.idx3-ubyte",
+    test_labels_path=DATA_DIR / "t10k-labels.idx1-ubyte",
     num_train=None,
     num_test=None
 ):

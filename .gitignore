@@ -11,6 +11,7 @@ app.py
 templates/
 index.html
 logs/
+mnist_data/
 
 # Distribution / packaging
 .Python

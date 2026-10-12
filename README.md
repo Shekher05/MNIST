@@ -23,7 +23,7 @@ It also includes **logging** and **exception handling** for better maintainabili
 ## 📂 Project Structure  
 ```bash
 MNIST/
-│-- artifacts/              # Saved trained models
+│-- artifacts/              # Saved trained models (created by training, git-ignored)
 │   ├── mnist_model.h5
 │   └── mnist_model.keras
 │
@@ -33,7 +33,6 @@ MNIST/
 │-- src/                    # Core source code
 │   ├── data.py             # Data loading & preprocessing
 │   ├── exception_h.py      # Exception handling utilities
-│   ├── forwardpass_NN.py   # Forward propagation / training logic
 │   ├── logger.py           # Logging configuration
 │   ├── Model.py            # Model definition
 │   ├── plot.py             # Visualization 
@@ -49,7 +48,7 @@ MNIST/
 1. **Clone the repository:**  
    ```bash
    git clone https://github.com/Shekher05/MNIST.git
-   cd MNIST-Digit-Recognition
+   cd MNIST
    ```
 
 2. **Install Dependencies:**
