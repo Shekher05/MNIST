@@ -62,6 +62,27 @@ MNIST/
    ```
 ---
 
+## 🌐 Web Page (Draw a Digit)  
+A small local-only page where you draw a digit with the mouse and the trained model predicts it.
+
+1. **Train the model first** (creates `artifacts/mnist_model.keras`):
+   ```bash
+   python main.py
+   ```
+
+2. **Start the web page:**
+   ```bash
+   python app.py
+   ```
+
+3. **Open** [http://127.0.0.1:5000](http://127.0.0.1:5000), draw a digit, and click **Predict**.
+
+- Served on `127.0.0.1` only, so it is not reachable from other machines.
+- Your drawing is cropped, scaled and centred the way MNIST digits are before it reaches the model.
+- Tests: `pip install pytest`, then `pytest test_app.py`.
+
+---
+
 ## 🔮 Future Improvements  
 - 🌐 Add a **web interface** (Flask/Django/Streamlit) for real-time digit recognition.  
 - 📊 Implement a **confusion matrix** and more detailed evaluation metrics.  
